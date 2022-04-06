@@ -14,7 +14,7 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public List<Produto> listar(String nome) {
+    public List<Produto> list(String nome) {
         return produtoRepository.findAll();
     }
 
@@ -24,7 +24,7 @@ public class ProdutoService {
     // }
 
    
-    public Produto listarPorId(Long id) {
+    public Produto listById(Long id) {
         return produtoRepository.findById(id).orElse(null);
     }
 

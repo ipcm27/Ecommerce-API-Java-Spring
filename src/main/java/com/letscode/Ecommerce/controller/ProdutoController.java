@@ -34,13 +34,13 @@ public class ProdutoController {
 
 
     @GetMapping(path="/")
-    public ResponseEntity<List<Produto>> listar(@RequestParam(name = "partName",required = false) String partName){List<Produto> produtos = produtoService.listar(partName);
+    public ResponseEntity<List<Produto>> list(@RequestParam(name = "partName",required = false) String partName){List<Produto> produtos = produtoService.list(partName);
         return new ResponseEntity<>(produtos,HttpStatus.OK);
     }
 
     @GetMapping(path="/{id}")
-    public ResponseEntity<Produto> listarPorId(@RequestParam(name = "id") Long id){
-        Produto produto = produtoService.listarPorId(id);
+    public ResponseEntity<Produto> listById(@RequestParam(name = "id") Long id){
+        Produto produto = produtoService.listById(id);
         if(produto ==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else{
