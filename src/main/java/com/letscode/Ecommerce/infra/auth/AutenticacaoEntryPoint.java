@@ -15,6 +15,6 @@ public class AutenticacaoEntryPoint implements AuthenticationEntryPoint {
                          HttpServletResponse response,
                          AuthenticationException authException)
             throws IOException, ServletException {
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Não autorizado")
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Não autorizado");
     }
 }
