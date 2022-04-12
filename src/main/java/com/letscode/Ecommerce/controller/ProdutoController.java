@@ -2,9 +2,8 @@ package com.letscode.Ecommerce.controller;
 
 import java.util.List;
 
-
-import com.letscode.Ecommerce.model.Produto;
 import com.letscode.Ecommerce.repository.ProdutoRepository;
+import com.letscode.Ecommerce.model.Produto;
 import com.letscode.Ecommerce.service.ProdutoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +47,14 @@ public class ProdutoController {
         }
     }
 
+    @GetMapping("/codigo/{codigoBarra}")
+    public ResponseEntity<Produto> getByCodigoBarra(
+            @PathVariable(name = "codigoBarra") String codigoBarra){
+
+        Produto produto = produtoService.listByCodigoBarra(codigoBarra);
+        return ResponseEntity.ok(produto);
+    }
+
    @PostMapping(path="/")
   public ResponseEntity<Produto> create(@RequestBody Produto produto){
         try{Produto produtoSalvo = produtoService.create(produto);
@@ -88,20 +95,20 @@ public class ProdutoController {
     }
 
 
-    @Bean
-    CommandLineRunner initDatabase(ProdutoRepository produtoRepository){
-        return args ->{
-            produtoRepository.deleteAll();
+    // @Bean
+    // CommandLineRunner initDatabase(ProdutoRepository produtoRepository){
+    //     return args ->{
+    //         produtoRepository.deleteAll();
 
-            Produto iphone = new Produto();
+    //         Produto iphone = new Produto();
             
-            iphone.setNome("Iphone");
-            iphone.setDescricao("Iphone X");
-            iphone.setPreco(1234.00);
+    //         iphone.setNome("Iphone");
+    //         iphone.setDescricao("Iphone X");
+        
             
 
-            produtoRepository.save(iphone);
-        };
-    }
+    //         produtoRepository.save(iphone);
+    //     };
+    // }
     
 }
