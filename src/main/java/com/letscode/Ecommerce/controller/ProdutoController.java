@@ -95,20 +95,20 @@ public class ProdutoController {
     }
 
 
-    @Bean
-    CommandLineRunner initDatabase(ProdutoRepository produtoRepository){
-        return args ->{
-            produtoRepository.deleteAll();
+    // @Bean
+    // CommandLineRunner initDatabase(ProdutoRepository produtoRepository){
+    //     return args ->{
+    //         produtoRepository.deleteAll();
 
-            Produto iphone = new Produto();
+    //         Produto iphone = new Produto();
             
-            iphone.setNome("Iphone");
-            iphone.setDescricao("Iphone X");
+    //         iphone.setNome("Iphone");
+    //         iphone.setDescricao("Iphone X");
         
             
 
-            produtoRepository.save(iphone);
-        };
-    }
+    //         produtoRepository.save(iphone);
+    //     };
+    // }
     
 }
