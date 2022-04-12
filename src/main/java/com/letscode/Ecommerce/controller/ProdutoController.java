@@ -2,9 +2,8 @@ package com.letscode.Ecommerce.controller;
 
 import java.util.List;
 
-
-import com.letscode.Ecommerce.model.Produto;
 import com.letscode.Ecommerce.repository.ProdutoRepository;
+import com.letscode.Ecommerce.model.Produto;
 import com.letscode.Ecommerce.service.ProdutoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +45,14 @@ public class ProdutoController {
         }else{
             return new ResponseEntity<>(produto,HttpStatus.OK);
         }
+    }
+
+    @GetMapping("/codigo/{codigoBarra}")
+    public ResponseEntity<Produto> getByCodigoBarra(
+            @PathVariable(name = "codigoBarra") String codigoBarra){
+
+        Produto produto = produtoService.listByCodigoBarra(codigoBarra);
+        return ResponseEntity.ok(produto);
     }
 
    @PostMapping(path="/")
@@ -97,7 +104,7 @@ public class ProdutoController {
             
             iphone.setNome("Iphone");
             iphone.setDescricao("Iphone X");
-            iphone.setPreco(1234.00);
+        
             
 
             produtoRepository.save(iphone);
