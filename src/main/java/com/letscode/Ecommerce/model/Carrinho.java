@@ -4,10 +4,7 @@ import java.util.Date;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +16,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class Carrinho {
+
+    @EmbeddedId
+    private ItemCarrinhoId idComposto;
 
     @Id
     private Long id;
@@ -32,7 +32,6 @@ public class Carrinho {
     @Column
     @OneToMany()
     private List<Produto> produtos;
-    // ADICIONAR PK COMPOSTA(USANDO ID DO CARRINHO E ID DO PRODUTO);
 
     // private Usuario usuario;
 }
